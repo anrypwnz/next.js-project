@@ -1,4 +1,1 @@
-# Nextjs project 
-
-- eslint validation on way ? 
-- stylelint the same _ 
+# Учебный проект на NextJS

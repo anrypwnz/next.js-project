@@ -1,16 +1,21 @@
 module.exports = {
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/,
-      issuer: {
-        // test: /\.(js|ts)x?$/,
-        // for webpack 5 use
-        and: [/\.(js|ts)x?$/],
-      },
+	images: {
+		domains: ['courses-top.ru']
+	},
+	webpack(config, options) {
+		config.module.rules.push({
+			loader: '@svgr/webpack',
+			options: {
+				prettier: false,
+				svgo: true,
+				svgoConfig: {
+					plugins: [{ removeViewBox: false }],
+				},
+				titleProp: true,
+			},
+			test: /\.svg$/,
+		});
 
-      use: ["@svgr/webpack"],
-    });
-
-    return config;
-  },
+		return config;
+	},
 };
